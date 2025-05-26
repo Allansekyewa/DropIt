@@ -1,9 +1,12 @@
+import 'dart:ui';
+
 import 'package:ayinza_commons/bloc/page_state.dart';
 
 // class AnimationState extends PageState{ }
 // class AnimationStopped extends AnimationState {}
 // class AnimationPlaying extends AnimationState {}
 abstract class AnimationState extends PageState {}
+class AnimationInitial extends AnimationState {}
 
 class AnimationStopped extends AnimationState {}
 
@@ -33,3 +36,13 @@ class AnimationData {
     required this.name,
   });
 }
+class AnimationInProgress extends AnimationState {
+  final double fadeValue;
+  final Offset slideOffset;
+
+  AnimationInProgress({
+    required this.fadeValue,
+    required this.slideOffset,
+  });
+}
+class AnimationCompleted extends AnimationState {}

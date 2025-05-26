@@ -13,3 +13,4 @@ class StopAnimation extends AnimationEvent {}
 class NextAnimation extends AnimationEvent {}
 
 class ResetAnimationCycle extends AnimationEvent {}
+class ResetAnimation extends AnimationEvent {}

@@ -1,6 +1,7 @@
 
 import 'package:DropIT/features/auth/presentation/bloc/authentication_bloc.dart';
-import 'package:DropIT/features/home/presentation/pages/home_page.dart';
+import 'package:DropIT/features/customer/presentation/pages/customer_dashboard.dart';
+
 import 'package:DropIT/injection_container.dart';
 import 'package:DropIT/res/animations/presentation/bloc/animation_bloc.dart';
 import 'package:ayinza_auth/auth/presentation/bloc/auth_bloc.dart';
@@ -36,11 +37,14 @@ class DropIt extends StatelessWidget {
                debugShowCheckedModeBanner: false,
       
         theme: ThemeData(
-         
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          
+       
           useMaterial3: true,
         ),
-        home: const HomePage(),
+        home: 
+       CustomerHomePage()
+        
+        //const HomePage(),
       ),
     );
   }
