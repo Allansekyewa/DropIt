@@ -1,0 +1,59 @@
+name: DropIT
+description: "A new Flutter project."
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Local dependencies
+  ayinza_commons:
+    git:
+      url: git@github.com:ayinza-flutter-packages/ayinza_commons.git
+  shared:
+    git:
+      url: git@github.com:ayinza-flutter-packages/shared.git
+  themes:
+    git:
+      url: git@github.com:ayinza-flutter-packages/themes.git
+  ayinza_form_components:
+    git:
+      url: git@github.com:ayinza-flutter-packages/ayinza_form_components.git
+  ayinza_page_scaffold:
+    git:
+      url: git@github.com:ayinza-flutter-packages/ayinza_page_scaffold.git
+  ayinza_auth:
+    git:
+      url: git@github.com:ayinza-flutter-packages/ayinza_auth.git
+
+  # Pub packages
+  flutter_bloc: ^8.1.5
+  lottie: ^3.3.1
+  flutter_hooks: ^0.20.5
+  cupertino_icons: ^1.0.8
+  get_it: ^7.7.0
+  flutter_secure_storage: ^9.2.4
+  flutter_appauth: ^8.0.3
+  http: ^1.2.1
+  dartz: ^0.10.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/configs/
+    - assets/animations/welcome.json
+    - assets/animations/cycling.json
+    - assets/animations/walking.json

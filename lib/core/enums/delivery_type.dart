@@ -1,0 +1,1 @@
+enum DeliveryType {walker,cyclist,motorCycle,motor}
