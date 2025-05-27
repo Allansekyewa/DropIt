@@ -25,3 +25,8 @@ MotorForm ._();
   static final MotorForm    _instance = MotorForm   ._();
   static MotorForm  get instance => _instance;
 }
+class DeliveryForm extends ValidatableForm {
+DeliveryForm ._();
+  static final DeliveryForm     _instance = DeliveryForm    ._();
+  static DeliveryForm   get instance => _instance;
+}

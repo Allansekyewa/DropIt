@@ -71,6 +71,17 @@ class SenderAreaChangedevent extends CustomerFieldChangedEvent {
     return currentState.copyWith(areaName: Area(senderArea));
   }
 }
+class RecieverAreaChangedevent extends CustomerFieldChangedEvent {
+  final String recieverArea;
+  RecieverAreaChangedevent(
+      {required this.recieverArea, required String componentKey})
+      : super(fieldKey: componentKey, fieldValue: recieverArea);
+
+  @override
+  CustomerState updateState(CustomerState currentState) {
+    return currentState.copyWith(areaName: Area(recieverArea));
+  }
+}
 class SenderDoorOrFlatNoChangedevent extends CustomerFieldChangedEvent {
   final String senderFlatNo;
  SenderDoorOrFlatNoChangedevent(
@@ -85,7 +96,7 @@ CustomerState updateState(CustomerState currentState) {
 class RecieverDoorOrFlatNoChangedevent extends CustomerFieldChangedEvent {
   final String flatNo;
  RecieverDoorOrFlatNoChangedevent(
-      {required this.flatNo, required String componentKey})
+      {required this.flatNo, required String componentKey, })
       : super(fieldKey: componentKey, fieldValue: flatNo);
 
   @override
