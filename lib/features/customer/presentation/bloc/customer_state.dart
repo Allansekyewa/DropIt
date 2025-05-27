@@ -13,11 +13,11 @@ import 'package:ayinza_commons/utils/validatable_form.dart';
 import 'package:flutter/foundation.dart';
 
 
-import 'package:flutter/foundation.dart';
 
 class CustomerState extends PageState {
   final PhoneNumber? phoneNumber;
   final FirstName? firstName;
+    final List<String>? selectedItems;
   final Area? areaName;
   final Category? category;
   final FlatNumber? flatNumber;
@@ -26,12 +26,13 @@ class CustomerState extends PageState {
   final Time? time;
   final Weight? weight;
   final Date? date;
-
+ 
   const CustomerState({
     this.phoneNumber,
     this.firstName,
     this.areaName,
     this.category,
+    this.selectedItems,
     this.flatNumber,
     this.pinCode,
     this.quantity,
@@ -46,6 +47,7 @@ class CustomerState extends PageState {
     PhoneNumber? phoneNumber,
     FirstName? firstName,
     Area? areaName,
+   List<String>? selectedItems,
     Category? category,
     FlatNumber? flatNumber,
     PinCode? pinCode,
@@ -65,6 +67,7 @@ class CustomerState extends PageState {
       pinCode: pinCode ?? this.pinCode,
       quantity: quantity ?? this.quantity,
       time: time ?? this.time,
+      selectedItems: selectedItems?? this.selectedItems,
       weight: weight ?? this.weight,
       date: date ?? this.date,
       triggerComponentKey: triggerComponentKey ?? this.triggerComponentKey,
@@ -83,6 +86,7 @@ class CustomerState extends PageState {
           quantity: previousState.quantity,
           time: previousState.time,
           weight: previousState.weight,
+          selectedItems: previousState.selectedItems,
           date: previousState.date,
           triggerComponentKey: previousState.triggerComponentKey,
           triggerComponentValue: previousState.triggerComponentValue,
@@ -95,6 +99,7 @@ class CustomerState extends PageState {
         areaName,
         category,
         flatNumber,
+        selectedItems,
         pinCode,
         quantity,
         time,
@@ -276,4 +281,17 @@ final class NavigateAndReplacePageFormState extends CustomerState
           triggerComponentKey: buttonKey.toString(),
           triggerComponentValue: '',
         );
+}
+class DropdownLoadedState extends CustomerState {
+  DropdownLoadedState({
+    required List<String> selectedItems,
+    required CustomerState previousState,
+  }) : super.fromPreviousState(
+          previousState: previousState.copyWith(
+            selectedItems: selectedItems,
+          ),
+        );
+
+  @override
+  List<Object?> get props => [selectedItems];
 }

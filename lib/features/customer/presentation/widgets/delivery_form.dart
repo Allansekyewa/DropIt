@@ -1,4 +1,5 @@
 import 'package:DropIT/app_settings.dart';
+import 'package:DropIT/core/constants/constants.dart';
 import 'package:DropIT/core/constants/global_variables.dart';
 import 'package:DropIT/features/customer/presentation/bloc/customer_bloc.dart';
 import 'package:DropIT/features/customer/presentation/bloc/customer_event.dart';
@@ -11,7 +12,7 @@ import 'package:shared/utils/generic_validatable_form.dart';
 
 BlocUtilityHelper customerBlocUtil =
     serviceLocator<BlocUtilityHelper<CustomerBloc, CustomerState>>();
-final ValidatableForm authenticationForm = DeliveryForm.instance;
+final ValidatableForm deliveryForm = DeliveryForm.instance;
 
 class SendersNameField extends GenericTextField {
   SendersNameField()
@@ -20,7 +21,7 @@ class SendersNameField extends GenericTextField {
             key: const Key(
               'sendersname-field',
             ),
-            form: authenticationForm,
+            form: deliveryForm,
             labelText: 'Enter Your Names',
             blocUtil: customerBlocUtil,
             keyboardType: TextInputType.text,
@@ -37,7 +38,7 @@ class RecieversNameField extends GenericTextField {
             key: const Key(
               'recieversName-field',
             ),
-            form: authenticationForm,
+            form: deliveryForm,
             labelText: 'Enter Recievers Names',
             blocUtil: customerBlocUtil,
             keyboardType: TextInputType.text,
@@ -54,8 +55,8 @@ class SenderFlatNoNameField extends GenericTextField {
             key: const Key(
               'sendeersflatNo-field',
             ),
-            form: authenticationForm,
-            labelText: 'EnterYour Flat Number',
+            form: deliveryForm,
+            labelText: 'Enter Your Flat Number',
             blocUtil: customerBlocUtil,
             keyboardType: TextInputType.text,
             onChanged: (key, value) {
@@ -71,8 +72,8 @@ class RecieverFlatNoNameField extends GenericTextField {
             key: const Key(
               'recieverflatlatNo-field',
             ),
-            form: authenticationForm,
-            labelText: 'EnterYour eciever Flat Number',
+            form: deliveryForm,
+            labelText: 'Enter  receiver Flat Number',
             blocUtil: customerBlocUtil,
             keyboardType: TextInputType.text,
             onChanged: (key, value) {
@@ -83,17 +84,17 @@ class RecieverFlatNoNameField extends GenericTextField {
             });
 }
 
-class SendersPhoneNameField extends GenericTextField {
+class SendersPhoneNameField extends GenericPhoneField {
   SendersPhoneNameField()
       : super(
             bloc: customerBloc,
             key: const Key(
               'endersPhoneNumber-field',
             ),
-            form: authenticationForm,
-            labelText: 'Enter Your PhoneNumber',
+            form: deliveryForm,
+           
             blocUtil: customerBlocUtil,
-            keyboardType: TextInputType.text,
+     
             onChanged: (key, value) {
               customerBloc.add(SendersNameChangedEvent(
                 sendersName: value,
@@ -102,17 +103,17 @@ class SendersPhoneNameField extends GenericTextField {
             });
 }
 
-class RecieversPhoneNameField extends GenericTextField {
+class RecieversPhoneNameField extends GenericPhoneField {
   RecieversPhoneNameField()
       : super(
             bloc: customerBloc,
             key: const Key(
               'recieverssPhoneNumber-field',
             ),
-            form: authenticationForm,
-            labelText: 'Enter recievers PhoneNumber',
+            form: deliveryForm,
+            
             blocUtil: customerBlocUtil,
-            keyboardType: TextInputType.text,
+        
             onChanged: (key, value) {
               customerBloc.add(SendersNameChangedEvent(
                 sendersName: value,
@@ -128,7 +129,7 @@ class SendersAreaNameField extends GenericTextField {
             key: const Key(
               'sendersAre-field',
             ),
-            form: authenticationForm,
+            form: deliveryForm,
             labelText: 'Enter Your Area ',
             blocUtil: customerBlocUtil,
             keyboardType: TextInputType.text,
@@ -147,7 +148,7 @@ class RecieversAreaNameField extends GenericTextField {
             key: const Key(
               'recieversArea-field',
             ),
-            form: authenticationForm,
+            form: deliveryForm,
             labelText: 'Enter Recievers Area ',
             blocUtil: customerBlocUtil,
             keyboardType: TextInputType.text,
@@ -166,7 +167,7 @@ class SendersPinField extends GenericTextField {
             key: const Key(
               'senderspin-field',
             ),
-            form: authenticationForm,
+            form: deliveryForm,
             labelText: 'Enter Senders Pin ',
             blocUtil: customerBlocUtil,
             keyboardType: TextInputType.text,
@@ -178,24 +179,103 @@ class SendersPinField extends GenericTextField {
             });
 }
 
-class CategoryField extends GenericDropdownCheckbox {
-  CategoryField(
-      {required super.key,
-      required super.form,
-      required super.bloc,
-      required super.hintText,
-      required super.onChanged,
-      required super.blocUtil,
-      required super.items});
+class QuantityField extends GenericTextField {
+  QuantityField()
+      : super(
+            bloc: customerBloc,
+            key: const Key(
+              'quantity-field',
+            ),
+            form: deliveryForm,
+            labelText: 'Enter quantity ',
+            blocUtil: customerBlocUtil,
+            keyboardType: TextInputType.text,
+            onChanged: (key, value) {
+              customerBloc.add(QuantityChangedevent(
+                quantity: value,
+                componentKey: key,
+              ));
+            });
 }
 
+
 class WeightField extends GenericDropdownCheckbox {
-  WeightField(
-      {required super.key,
-      required super.form,
-      required super.bloc,
-      required super.hintText,
-      required super.onChanged,
-      required super.blocUtil,
-      required super.items});
+  WeightField()
+      : super(
+            bloc: customerBloc,
+            blocUtil: customerBlocUtil,
+            form:deliveryForm,
+            key: const Key('weight-field'),
+            items: weightTypes,
+            hintText: 'Weight',
+            onChanged: (key, value) {
+              customerBloc.add(DropdownSelectionChangedEvent(
+                componentKey: key,
+                selectedItems: value,
+              ));
+            });
+}
+class CategoryField extends GenericDropdownCheckbox {
+  CategoryField()
+      : super(
+            bloc: customerBloc,
+            blocUtil: customerBlocUtil,
+            form:deliveryForm,
+            key: const Key('category-field'),
+            items: categoryTypes,
+            hintText: 'Category',
+            onChanged: (key, value) {
+              customerBloc.add(DropdownSelectionChangedEvent(
+                componentKey: key,
+                selectedItems: value,
+              ));
+            });
+}
+class DeliveryTypeField extends GenericDropdownCheckbox {
+  DeliveryTypeField()
+      : super(
+            bloc: customerBloc,
+            blocUtil: customerBlocUtil,
+            form:deliveryForm,
+            key: const Key('category-field'),
+            items: deliveryTypes,
+            hintText: 'Choose Delivery',
+            onChanged: (key, value) {
+              customerBloc.add(DropdownSelectionChangedEvent(
+                componentKey: key,
+                selectedItems: value,
+              ));
+            });
+}
+
+class NextButton extends GenericFormSimpleButton {
+  NextButton()
+      : super(
+            bloc: customerBloc,
+            key: const Key("next-button"),
+            form: deliveryForm,
+            label: "Next",
+            onTap: (po) {},
+            blocUtil: customerBlocUtil);
+}
+class SubmitOrderFormButton extends GenericFormSimpleButton {
+  
+  final CustomerBloc customerBloc;
+  SubmitOrderFormButton(this.customerBloc   
+
+    
+   
+  ) : super(
+          key: const Key('Submit-User-Info'),
+          bloc: customerBloc,
+          blocUtil: customerBlocUtil,
+          form: deliveryForm,
+          label:  "Edit Account",
+          onTap: (key) {
+            customerBloc.add(SubmitOrderFormEvent(
+              key
+            
+            ));
+          },
+        );
 }

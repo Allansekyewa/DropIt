@@ -5,8 +5,10 @@ import 'package:DropIT/vo/firstName.dart';
 import 'package:DropIT/vo/flat_no.dart';
 import 'package:DropIT/vo/phoneNumber.dart';
 import 'package:DropIT/vo/pinCode.dart';
+import 'package:DropIT/vo/quantity.dart';
 import 'package:DropIT/vo/time.dart';
 import 'package:ayinza_commons/bloc/page_event.dart';
+import 'package:flutter/material.dart';
 
 class CustomerEvent  extends PageEvent{}
 sealed class CustomerFieldChangedEvent extends CustomerEvent
@@ -151,3 +153,33 @@ class TimeChangedevent extends CustomerFieldChangedEvent {
     return currentState.copyWith(time:Time(time));
   }
 }
+class QuantityChangedevent extends CustomerFieldChangedEvent {
+  final String quantity;
+ QuantityChangedevent(
+      {required this.quantity, required String componentKey})
+      : super(fieldKey: componentKey, fieldValue: quantity);
+
+  @override
+ CustomerState updateState(CustomerState currentState) {
+    return currentState.copyWith(quantity:Quantity(quantity));
+  }
+}
+class SubmitOrderFormEvent extends CustomerEvent{
+  final Key key;
+  SubmitOrderFormEvent(this.key);
+}
+class DropdownSelectionChangedEvent extends CustomerFieldChangedEvent {
+  final List<String> selectedItems;
+
+  DropdownSelectionChangedEvent({
+    required this.selectedItems,
+    required String componentKey,
+  }) : super(fieldKey: componentKey, fieldValue: selectedItems);
+
+  @override
+CustomerState updateState(CustomerState currentState) {
+    final newState = currentState.copyWith(selectedItems: selectedItems);
+    return newState;
+  }
+}
+

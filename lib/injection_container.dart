@@ -9,6 +9,7 @@ import 'package:DropIT/features/auth/domain/usecase/update_driver_acc.dart';
 import 'package:DropIT/features/auth/presentation/bloc/authentication_bloc.dart';
 import 'package:DropIT/features/auth/presentation/bloc/authentication_state.dart';
 import 'package:DropIT/features/customer/presentation/bloc/customer_bloc.dart';
+import 'package:DropIT/features/customer/presentation/bloc/customer_state.dart';
 import 'package:DropIT/features/home/presentation/pages/home_page.dart';
 import 'package:DropIT/res/animations/presentation/bloc/animation_bloc.dart';
 import 'package:ayinza_auth/auth/data/datasources/auth_local_datasource.dart';
@@ -93,6 +94,11 @@ Future<void> initializeDependencies() async {
 
 
   );
+    serviceLocator.registerLazySingleton<CustomerBloc>(
+    () => CustomerBloc(),
+
+
+  );
  
    serviceLocator
       .registerLazySingleton<AuthenticationBloc>(() => AuthenticationBloc(
@@ -109,5 +115,9 @@ Future<void> initializeDependencies() async {
    serviceLocator.registerLazySingleton<
       BlocUtilityHelper<AuthenticationBloc, AuthenticationState>>(
     () => const BlocUtilityHelper<AuthenticationBloc, AuthenticationState>(),
+  );
+   serviceLocator.registerLazySingleton<
+      BlocUtilityHelper<CustomerBloc, CustomerState>>(
+    () => const BlocUtilityHelper<CustomerBloc, CustomerState>(),
   );
 }

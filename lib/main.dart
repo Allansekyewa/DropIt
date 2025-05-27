@@ -1,5 +1,6 @@
 
 import 'package:DropIT/features/auth/presentation/bloc/authentication_bloc.dart';
+import 'package:DropIT/features/customer/presentation/bloc/customer_bloc.dart';
 import 'package:DropIT/features/customer/presentation/pages/customer_dashboard.dart';
 
 import 'package:DropIT/injection_container.dart';
@@ -31,6 +32,7 @@ class DropIt extends StatelessWidget {
                   BlocProvider(create: (context) => serviceLocator<AuthBloc>()),
                    BlocProvider(create: (context) => serviceLocator<AuthenticationBloc>()),
                     BlocProvider(create: (context) => serviceLocator<TabBloc>()),
+                     BlocProvider(create: (context) => serviceLocator<CustomerBloc>()),
       ],
       child: MaterialApp(
         
