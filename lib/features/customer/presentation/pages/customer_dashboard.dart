@@ -3,6 +3,7 @@ import 'package:DropIT/features/customer/presentation/widgets/item_delivery_card
 import 'package:DropIT/features/customer/presentation/widgets/quick_buttons.dart';
 import 'package:DropIT/features/customer/presentation/widgets/status_card.dart';
 import 'package:DropIT/features/customer/presentation/widgets/welcome.dart';
+import 'package:DropIT/features/tracking/presentation/pages/tracking_page.dart';
 import 'package:ayinza_commons/navigation/nav.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,9 @@ class CustomerHomePage extends StatelessWidget {
                             icon: Icons.search,
                             label: 'Track\nPackage',
                             color: const Color(0xFF764BA2),
-                            onTap: () {},
+                            onTap: () {
+                              AppNavigation.nextPage(context, TrackingPage());
+                            },
                           ),
                         ),
                       ],
