@@ -114,9 +114,9 @@ class CustomerInitial extends CustomerState {
   const CustomerInitial() : super();
 }
 
-class CreateAccountValidationFieldPassed extends CustomerState
+class CreateOrderValidationFieldPassed extends CustomerState
     with FieldValidationPassedState {
-  CreateAccountValidationFieldPassed({
+  CreateOrderValidationFieldPassed({
     required CustomerState previousState,
     required String fieldComponentKey,
     dynamic fieldComponentValue,
@@ -131,12 +131,12 @@ class CreateAccountValidationFieldPassed extends CustomerState
   List<Object?> get props => [triggerComponentKey, triggerComponentValue];
 }
 
-class CreateAccountFieldValidationFailed extends CustomerState
+class CreateOrderFieldValidationFailed extends CustomerState
     with FieldValidationFailedState {
   @override
   final String errorMessage;
 
-  CreateAccountFieldValidationFailed({
+  CreateOrderFieldValidationFailed({
     required CustomerState previousState,
     required String fieldComponentKey,
     required dynamic fieldComponentValue,
@@ -154,12 +154,12 @@ class CreateAccountFieldValidationFailed extends CustomerState
 }
 
 @immutable
-final class CreateAccountFormSubmissionStateInProgress extends CustomerState
+final class CreateOrderFormSubmissionStateInProgress extends CustomerState
     with ActivityInProgressState {
   @override
   final Key buttonKey;
 
-  CreateAccountFormSubmissionStateInProgress({
+  CreateOrderFormSubmissionStateInProgress({
     required this.buttonKey,
     required CustomerState previousState,
   }) : super.fromPreviousState(
@@ -170,7 +170,7 @@ final class CreateAccountFormSubmissionStateInProgress extends CustomerState
 }
 
 @immutable
-final class CreateAccountFormSubmissionFailed extends CustomerState
+final class CreateOrderFormSubmissionFailed extends CustomerState
     with RequestFailedState {
   @override
   final String errorMessage;
@@ -178,7 +178,7 @@ final class CreateAccountFormSubmissionFailed extends CustomerState
   @override
   final Key buttonKey;
 
-  CreateAccountFormSubmissionFailed({
+  CreateOrderFormSubmissionFailed({
     required this.buttonKey,
     required this.errorMessage,
     required CustomerState previousState,
@@ -191,7 +191,7 @@ final class CreateAccountFormSubmissionFailed extends CustomerState
 }
 
 @immutable
-final class CreateAccountFormSubmissionSuccess extends CustomerState
+final class CreateOrderFormSubmissionSuccess extends CustomerState
     with RequestSuccessfulState {
   @override
   final String successMessage;
@@ -199,7 +199,7 @@ final class CreateAccountFormSubmissionSuccess extends CustomerState
   @override
   final Key buttonKey;
 
-  CreateAccountFormSubmissionSuccess({
+  CreateOrderFormSubmissionSuccess({
     required this.buttonKey,
     this.successMessage = 'Account has been Created!',
     required CustomerState previousState,
@@ -211,7 +211,7 @@ final class CreateAccountFormSubmissionSuccess extends CustomerState
 }
 
 @immutable
-final class InvalidCreateAccountFormState extends CustomerState
+final class InvalidOrderAccountFormState extends CustomerState
     with FormInvalidState {
   @override
   final String errorMessage;
@@ -219,7 +219,7 @@ final class InvalidCreateAccountFormState extends CustomerState
   @override
   final Key buttonKey;
 
-  InvalidCreateAccountFormState({
+  InvalidOrderAccountFormState({
     required this.buttonKey,
     required CustomerState previousState,
     this.errorMessage = 'Please fill all required fields',
@@ -231,14 +231,14 @@ final class InvalidCreateAccountFormState extends CustomerState
 }
 
 @immutable
-final class ClearAccountFormState extends CustomerState with ClearFormState {
+final class ClearDeliveryFormState extends CustomerState with ClearFormState {
   @override
   final ValidatableForm form;
 
   @override
   final Key buttonKey;
 
-  ClearAccountFormState({
+ClearDeliveryFormState({
     required this.buttonKey,
     required this.form,
   }) : super(
