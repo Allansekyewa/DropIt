@@ -5,6 +5,7 @@ import 'package:DropIT/features/customer/presentation/widgets/status_card.dart';
 import 'package:DropIT/features/customer/presentation/widgets/welcome.dart';
 import 'package:DropIT/features/tracking/presentation/pages/tracking_page.dart';
 import 'package:ayinza_commons/navigation/nav.dart';
+import 'package:ayinza_commons/utils/navigable_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:themes/apptheme/color/app_colors.dart';
 import 'package:themes/apptheme/extensions/extensions.dart';
 
-class CustomerHomePage extends StatelessWidget {
+class CustomerHomePage extends NavigablePage {
   const CustomerHomePage({super.key});
 
   @override

@@ -1,3 +1,4 @@
+import 'package:DropIT/features/customer/presentation/widgets/delivery_steps_widget.dart';
 import 'package:DropIT/features/customer/presentation/widgets/order_summary.dart';
 
 import 'package:DropIT/features/customer/presentation/widgets/delivery_form.dart';
@@ -28,19 +29,16 @@ class CreateDelivery extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          verticalSpaceSmall,
-         TrackingProgressIndicator(
-          currentStep: 1, 
-          circleSize: 30.0,
-          lineWidth: 1.0,
-          activeColor: AppColors.green,
-          inactiveColor: AppColors.lightGrey,
-        ),
+        //   verticalSpaceSmall,
+        //  TrackingProgressIndicator(
+        //   currentStep: 1, 
+        //   circleSize: 30.0,
+        //   lineWidth: 1.0,
+        //   activeColor: AppColors.green,
+        //   inactiveColor: AppColors.lightGrey,
+        // ),
         verticalSpaceSmall,
-       //SendersWidget(),
-       // RecieversWidget()
-         // PackageWidget()
-         OrderSummary()
+          DeliveryStepperScreen()
         ],
             ),
       ));

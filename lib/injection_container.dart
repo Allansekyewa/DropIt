@@ -8,6 +8,7 @@ import 'package:DropIT/features/auth/domain/usecase/update_customer_acc.dart';
 import 'package:DropIT/features/auth/domain/usecase/update_driver_acc.dart';
 import 'package:DropIT/features/auth/presentation/bloc/authentication_bloc.dart';
 import 'package:DropIT/features/auth/presentation/bloc/authentication_state.dart';
+import 'package:DropIT/features/customer/domain/usecases/create_order_usecase.dart';
 import 'package:DropIT/features/customer/presentation/bloc/customer_bloc.dart';
 import 'package:DropIT/features/customer/presentation/bloc/customer_state.dart';
 import 'package:DropIT/features/home/presentation/pages/home_page.dart';
@@ -85,6 +86,7 @@ Future<void> initializeDependencies() async {
    serviceLocator.registerSingleton<UpdateDriverAccountUsecase>(
     UpdateDriverAccountUsecase(),
   );
+  serviceLocator.registerSingleton<CreateOrderUsecase>(CreateOrderUsecase());
   
   // Blocs
   serviceLocator.registerLazySingleton<AnimationBloc>(() => AnimationBloc());
@@ -95,7 +97,7 @@ Future<void> initializeDependencies() async {
 
   );
     serviceLocator.registerLazySingleton<CustomerBloc>(
-    () => CustomerBloc(),
+    () => CustomerBloc(serviceLocator()),
 
 
   );

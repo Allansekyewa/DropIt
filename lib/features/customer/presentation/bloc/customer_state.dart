@@ -6,6 +6,7 @@ import 'package:DropIT/vo/phoneNumber.dart';
 import 'package:DropIT/vo/pinCode.dart';
 import 'package:DropIT/vo/quantity.dart';
 import 'package:DropIT/vo/time.dart';
+import 'package:DropIT/vo/userName.dart';
 import 'package:DropIT/vo/weight.dart';
 import 'package:ayinza_commons/bloc/page_state.dart';
 import 'package:ayinza_commons/utils/navigable_page.dart';
@@ -16,8 +17,9 @@ import 'package:flutter/foundation.dart';
 
 class CustomerState extends PageState {
   final PhoneNumber? phoneNumber;
-  final FirstName? firstName;
-    final List<String>? selectedItems;
+  final UserName? userName;
+  final List<String>? selectedItems;
+  final int currentStep;
   final Area? areaName;
   final Category? category;
   final FlatNumber? flatNumber;
@@ -29,9 +31,10 @@ class CustomerState extends PageState {
  
   const CustomerState({
     this.phoneNumber,
-    this.firstName,
+    this.userName,
     this.areaName,
     this.category,
+    this.currentStep=1,
     this.selectedItems,
     this.flatNumber,
     this.pinCode,
@@ -45,7 +48,8 @@ class CustomerState extends PageState {
 
   CustomerState copyWith({
     PhoneNumber? phoneNumber,
-    FirstName? firstName,
+    UserName? userName,
+    int?currentStep,
     Area? areaName,
    List<String>? selectedItems,
     Category? category,
@@ -60,8 +64,9 @@ class CustomerState extends PageState {
   }) {
     return CustomerState(
       phoneNumber: phoneNumber ?? this.phoneNumber,
-      firstName: firstName ?? this.firstName,
+    userName: userName?? this.userName,
       areaName: areaName ?? this.areaName,
+      currentStep: currentStep??this.currentStep,
       category: category ?? this.category,
       flatNumber: flatNumber ?? this.flatNumber,
       pinCode: pinCode ?? this.pinCode,
@@ -78,7 +83,7 @@ class CustomerState extends PageState {
   CustomerState.fromPreviousState({required CustomerState previousState})
       : this(
           phoneNumber: previousState.phoneNumber,
-          firstName: previousState.firstName,
+          userName: previousState.userName,
           areaName: previousState.areaName,
           category: previousState.category,
           flatNumber: previousState.flatNumber,
@@ -86,6 +91,7 @@ class CustomerState extends PageState {
           quantity: previousState.quantity,
           time: previousState.time,
           weight: previousState.weight,
+          currentStep: previousState.currentStep,
           selectedItems: previousState.selectedItems,
           date: previousState.date,
           triggerComponentKey: previousState.triggerComponentKey,
@@ -95,11 +101,12 @@ class CustomerState extends PageState {
   @override
   List<Object?> get props => [
         phoneNumber,
-        firstName,
+        userName,
         areaName,
         category,
         flatNumber,
         selectedItems,
+        currentStep,
         pinCode,
         quantity,
         time,

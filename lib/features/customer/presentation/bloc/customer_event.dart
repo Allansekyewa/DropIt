@@ -7,6 +7,7 @@ import 'package:DropIT/vo/phoneNumber.dart';
 import 'package:DropIT/vo/pinCode.dart';
 import 'package:DropIT/vo/quantity.dart';
 import 'package:DropIT/vo/time.dart';
+import 'package:DropIT/vo/userName.dart';
 import 'package:ayinza_commons/bloc/page_event.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,7 @@ class SendersNameChangedEvent extends CustomerFieldChangedEvent {
 
   @override
  CustomerState updateState(CustomerState currentState) {
-    return currentState.copyWith(firstName: FirstName(sendersName));
+    return currentState.copyWith(userName: UserName(sendersName));
   }
 }
 class RecieversNameChangedEvent extends CustomerFieldChangedEvent {
@@ -37,7 +38,7 @@ class RecieversNameChangedEvent extends CustomerFieldChangedEvent {
 
   @override
  CustomerState updateState(CustomerState currentState) {
-    return currentState.copyWith(firstName: FirstName(name));
+    return currentState.copyWith(userName: UserName(name));
   }
 }
 class SenderNumberChangedevent extends CustomerFieldChangedEvent {
@@ -182,4 +183,4 @@ CustomerState updateState(CustomerState currentState) {
     return newState;
   }
 }
-
+class NextStepEvent extends CustomerEvent {}
