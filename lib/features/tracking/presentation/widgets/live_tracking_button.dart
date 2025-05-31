@@ -24,6 +24,7 @@ class LiveTrackingButton extends StatelessWidget {
           child: Text(
             'Live Tracking',
             style: context.theme.appTextTheme.semibold,
+            
           ),
         ),
       ),

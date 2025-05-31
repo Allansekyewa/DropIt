@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:themes/apptheme/color/app_colors.dart';
 
@@ -22,15 +23,15 @@ class PackageStatus extends StatelessWidget {
           ),
           const Spacer(),
           Row(
-            children: const [
-              Icon(Icons.local_shipping_outlined, color: Colors.orange),
-              SizedBox(width: 4),
+            children:  [
+              Icon(CupertinoIcons.car_detailed, color: AppColors.orangeColor),
+              SizedBox(width: 8),
               Text(
                 'In Transit',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: Colors.orange,
+                  color: AppColors.orangeColor
                 ),
               ),
             ],

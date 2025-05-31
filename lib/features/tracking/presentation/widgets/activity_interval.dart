@@ -14,7 +14,7 @@ class ActivityIntervalTracker extends StatelessWidget {
     required this.currentStep,
     this.circleSize = 30.0,
     this.lineHeight = 20.0,
-    this.activeColor = Colors.blue,
+    this.activeColor = Colors.green,
     this.inactiveColor = Colors.grey,
   });
 
